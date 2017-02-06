@@ -1,0 +1,45 @@
+<div>
+	{{username}}
+	<table id="matchesTable">
+		<tr>
+			<th> Position </th>
+			<th> Date <br>
+			(yyyy-mm-dd)</th>
+			<th> Time </th>
+			<th> Operations </th>
+		</tr>
+		<tr ng-repeat="myMatch in myMatches">
+			<td>{{myMatch.position}}</td>
+			<td>{{myMatch.date}}</td>
+			<td>{{myMatch.time}}</td>
+			<td>
+				<button ng-click="find(myMatch)" class="button">Edit</button>
+				<button ng-click="delete(myMatch._id)" class="button">Delete</button>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<form style="display: none;" id="editForm" action="/update" method="POST">
+	<label>
+		<span>Id: </span>
+		<input type="text" name="identifier" ng-model="identifier" readonly="readonly">
+	</label>
+	<label for="position">
+		<span>Position: </span>
+		<select ng-model="position" name="position" ng-init="position=positions[0]" required>
+			<option ng-repeat="pos in positions" value="{{pos}}">{{pos}}</option>
+		</select>
+	</label>
+	<label for="date" >
+		<span>Date: </span>
+		<input ng-model="date" name="date" type="date" required min="{{today | date:'yyyy-MM-dd'}}">
+	 </label>
+	<label for="time1">
+		<span>Time: </span>
+		<select ng-model="time1" name="time1" ng-init="time1=times[0]">
+			<option ng-repeat="time in times" value="{{time}}">{{time}}</option>
+		</select>
+	 </label>
+	<button ng-click="edit()" class="button">Submit</button>
+</form>

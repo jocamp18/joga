@@ -1,0 +1,20 @@
+<form action="/newMatch" method="POST">
+	<label for="position">
+		<span>Position:</span>
+		<!--<select ng-model="position" name="position" ng-options="pos.name for pos in positions"></select>-->
+		<select ng-model="position" name="position" ng-init="position=positions[0]" required>
+			<option ng-repeat="pos in positions" value="{{pos}}" ng-selected="selected">{{pos}}</option>
+		</select>
+	 </label>
+	<label for="date">
+		<span>Date:</span>
+		<input ng-model="date" name="date" type="date" required min="{{today | date:'yyyy-MM-dd'}}">
+	 </label>
+	<label for="time1">
+		<span>Time:</span>
+		<select ng-model="time1" name="time1" ng-init="time1=times[0]" required>
+			<option ng-repeat="time in times" value="{{time}}">{{time}}</option>
+		</select>
+	 </label>
+	<input type="submit" class="button" />
+</form>

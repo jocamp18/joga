@@ -1,0 +1,17 @@
+<div>
+	{{username}}
+	<table>
+		<tr>
+			<th> Username </th>
+			<th> Position </th>
+			<th> Date </th>
+			<th> Time </th>
+		</tr>
+  		<tr ng-repeat="match in matches">
+  			<td>{{ match.username}}</td>
+    		<td>{{ match.position }}</td>
+    		<td>{{ match.date }}</td>
+    		<td>{{ match.time }}</td>
+  		</tr>
+	</table>
+</div>
